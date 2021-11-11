@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--1,234개의 메모-->
+        <!--메모-->
         <scene sceneID="lSU-tY-hJo">
             <objects>
-                <tableViewController id="Uks-uG-RsY" customClass="MemoListTableViewController" customModule="MeeMoo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="메모" id="Uks-uG-RsY" customClass="MemoListTableViewController" customModule="MeeMoo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="tew-xR-IW2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,12 +36,14 @@
                         <barButtonItem image="square.and.pencil" catalog="system" id="kUl-i1-iso">
                             <connections>
                                 <action selector="didTapCreateNoteButton:" destination="Uks-uG-RsY" id="wJu-GH-DXx"/>
-                                <segue destination="ezi-h8-EGG" kind="show" id="bTm-tR-nag"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="1,234개의 메모" id="g1v-mK-K9X"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="ezi-h8-EGG" kind="show" identifier="CreateMemoSegue" id="oTn-hv-xqK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Fg-vH-9eV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -51,11 +53,13 @@
         <scene sceneID="z0s-bZ-toR">
             <objects>
                 <viewControllerPlaceholder storyboardName="CreateMemo" id="ezi-h8-EGG" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="oNc-Ms-KMo"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="oNc-Ms-KMo">
+                        <barButtonItem key="backBarButtonItem" title="메모" id="dbV-Zf-ckW"/>
+                    </navigationItem>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UPi-dn-2ut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="296"/>
+            <point key="canvasLocation" x="1571" y="66"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sbF-ei-FoC">

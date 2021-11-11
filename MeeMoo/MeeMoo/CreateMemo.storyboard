@@ -12,22 +12,45 @@
         <!--Create Memo View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="CreateMemoViewController" id="Y6W-OH-hqX" customClass="CreateMemoViewController" customModule="MeeMoo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateMemoViewController" interfaceStyle="light" id="Y6W-OH-hqX" customClass="CreateMemoViewController" customModule="MeeMoo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="v7C-yS-7pZ">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="linkColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="v7C-yS-7pZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="42e-oZ-qH5"/>
+                            <constraint firstItem="v7C-yS-7pZ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="9eu-ie-Apf"/>
+                            <constraint firstItem="v7C-yS-7pZ" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="IKV-fQ-7xn"/>
+                            <constraint firstItem="v7C-yS-7pZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vXx-Hn-Psa"/>
+                        </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="textView" destination="v7C-yS-7pZ" id="ask-Sa-vwQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3" y="116"/>
+            <point key="canvasLocation" x="-4.3478260869565224" y="115.84821428571428"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

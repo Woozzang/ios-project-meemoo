@@ -23,8 +23,25 @@ class MemoListTableViewController: UITableViewController {
       search.searchBar.placeholder = "검색"
       
       navigationItem.searchController = search
+      
+      
+      
+      navigationItem.backButtonTitle = "메모"
     }
-
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    switch sender {
+        
+      case let sender as UIBarButtonItem:
+        guard let vc = segue.destination as? CreateMemoViewController else  { return }
+        vc.isMemoEditing = true
+        
+      default:
+        break
+    }
+    
+  }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,8 +54,9 @@ class MemoListTableViewController: UITableViewController {
         return 0
     }
   
-  @IBAction func didTapCreateNoteButton(_ sender: Any) {
+  @IBAction func didTapCreateNoteButton(_ sender: UIBarButtonItem) {
     
+    performSegue(withIdentifier: "CreateMemoSegue", sender: sender)
   }
 }
 
