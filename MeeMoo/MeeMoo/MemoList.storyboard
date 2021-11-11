@@ -33,7 +33,12 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="67w-yj-tPK"/>
-                        <barButtonItem image="square.and.pencil" catalog="system" id="kUl-i1-iso"/>
+                        <barButtonItem image="square.and.pencil" catalog="system" id="kUl-i1-iso">
+                            <connections>
+                                <action selector="didTapCreateNoteButton:" destination="Uks-uG-RsY" id="wJu-GH-DXx"/>
+                                <segue destination="ezi-h8-EGG" kind="show" id="bTm-tR-nag"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="1,234개의 메모" id="g1v-mK-K9X"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -41,6 +46,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Fg-vH-9eV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860.86956521739137" y="65.625"/>
+        </scene>
+        <!--CreateMemo-->
+        <scene sceneID="z0s-bZ-toR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateMemo" id="ezi-h8-EGG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="oNc-Ms-KMo"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UPi-dn-2ut" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1446" y="296"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sbF-ei-FoC">

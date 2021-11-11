@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD3E7ECF273BB0E800E11C9A /* CreateMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7ECE273BB0E800E11C9A /* CreateMemoViewController.swift */; };
+		DD3E7ED1273D3DF400E11C9A /* CreateMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD3E7ED0273D3DF400E11C9A /* CreateMemo.storyboard */; };
 		DD72771F273B3BD0003C4AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD72771E273B3BD0003C4AC7 /* AppDelegate.swift */; };
 		DD727721273B3BD0003C4AC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD727720273B3BD0003C4AC7 /* SceneDelegate.swift */; };
 		DD727723273B3BD0003C4AC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD727722273B3BD0003C4AC7 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD3E7ECE273BB0E800E11C9A /* CreateMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoViewController.swift; sourceTree = "<group>"; };
+		DD3E7ED0273D3DF400E11C9A /* CreateMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateMemo.storyboard; sourceTree = "<group>"; };
 		DD72771B273B3BD0003C4AC7 /* MeeMoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeeMoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD72771E273B3BD0003C4AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD727720273B3BD0003C4AC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,10 +66,12 @@
 				DD727720273B3BD0003C4AC7 /* SceneDelegate.swift */,
 				DD727722273B3BD0003C4AC7 /* ViewController.swift */,
 				DD727732273B3CBD003C4AC7 /* MemoListTableViewController.swift */,
+				DD3E7ECE273BB0E800E11C9A /* CreateMemoViewController.swift */,
 				DD727734273B3CD5003C4AC7 /* MemoList.storyboard */,
 				DD727727273B3BD2003C4AC7 /* Assets.xcassets */,
 				DD727729273B3BD2003C4AC7 /* LaunchScreen.storyboard */,
 				DD72772C273B3BD2003C4AC7 /* Info.plist */,
+				DD3E7ED0273D3DF400E11C9A /* CreateMemo.storyboard */,
 			);
 			path = MeeMoo;
 			sourceTree = "<group>";
@@ -130,6 +136,7 @@
 			files = (
 				DD727735273B3CD5003C4AC7 /* MemoList.storyboard in Resources */,
 				DD72772B273B3BD2003C4AC7 /* LaunchScreen.storyboard in Resources */,
+				DD3E7ED1273D3DF400E11C9A /* CreateMemo.storyboard in Resources */,
 				DD727728273B3BD2003C4AC7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +151,7 @@
 				DD727723273B3BD0003C4AC7 /* ViewController.swift in Sources */,
 				DD72771F273B3BD0003C4AC7 /* AppDelegate.swift in Sources */,
 				DD727721273B3BD0003C4AC7 /* SceneDelegate.swift in Sources */,
+				DD3E7ECF273BB0E800E11C9A /* CreateMemoViewController.swift in Sources */,
 				DD727733273B3CBD003C4AC7 /* MemoListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

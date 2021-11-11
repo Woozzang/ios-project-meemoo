@@ -36,6 +36,10 @@ class MemoListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
+  
+  @IBAction func didTapCreateNoteButton(_ sender: Any) {
+    
+  }
 }
 
 extension MemoListTableViewController: UISearchResultsUpdating {
