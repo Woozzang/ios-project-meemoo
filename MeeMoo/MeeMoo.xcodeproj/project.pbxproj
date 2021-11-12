@@ -13,6 +13,8 @@
 		DD3E7ED7273DDC7400E11C9A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD3E7ED6273DDC7400E11C9A /* RealmSwift */; };
 		DD3E7EDA273DDC8A00E11C9A /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7ED9273DDC8A00E11C9A /* Memo.swift */; };
 		DD3E7EDD273DF02B00E11C9A /* PersistentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EDC273DF02B00E11C9A /* PersistentService.swift */; };
+		DD3E7EDF273E50D400E11C9A /* MemoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3E7EDE273E50D400E11C9A /* MemoCell.xib */; };
+		DD3E7EE1273E52A400E11C9A /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EE0273E52A400E11C9A /* MemoTableViewCell.swift */; };
 		DD72771F273B3BD0003C4AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD72771E273B3BD0003C4AC7 /* AppDelegate.swift */; };
 		DD727721273B3BD0003C4AC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD727720273B3BD0003C4AC7 /* SceneDelegate.swift */; };
 		DD727728273B3BD2003C4AC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD727727273B3BD2003C4AC7 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 		DD3E7ED0273D3DF400E11C9A /* CreateMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateMemo.storyboard; sourceTree = "<group>"; };
 		DD3E7ED9273DDC8A00E11C9A /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		DD3E7EDC273DF02B00E11C9A /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
+		DD3E7EDE273E50D400E11C9A /* MemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoCell.xib; sourceTree = "<group>"; };
+		DD3E7EE0273E52A400E11C9A /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 		DD72771B273B3BD0003C4AC7 /* MeeMoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeeMoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD72771E273B3BD0003C4AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD727720273B3BD0003C4AC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				DD3E7ECE273BB0E800E11C9A /* CreateMemoViewController.swift */,
 				DD727734273B3CD5003C4AC7 /* MemoList.storyboard */,
 				DD3E7ED0273D3DF400E11C9A /* CreateMemo.storyboard */,
+				DD3E7EDE273E50D400E11C9A /* MemoCell.xib */,
+				DD3E7EE0273E52A400E11C9A /* MemoTableViewCell.swift */,
 			);
 			path = MeeMoo;
 			sourceTree = "<group>";
@@ -175,6 +181,7 @@
 				DD727735273B3CD5003C4AC7 /* MemoList.storyboard in Resources */,
 				DD72772B273B3BD2003C4AC7 /* LaunchScreen.storyboard in Resources */,
 				DD3E7ED1273D3DF400E11C9A /* CreateMemo.storyboard in Resources */,
+				DD3E7EDF273E50D400E11C9A /* MemoCell.xib in Resources */,
 				DD727728273B3BD2003C4AC7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +196,7 @@
 				DD3E7EDD273DF02B00E11C9A /* PersistentService.swift in Sources */,
 				DD72771F273B3BD0003C4AC7 /* AppDelegate.swift in Sources */,
 				DD727721273B3BD0003C4AC7 /* SceneDelegate.swift in Sources */,
+				DD3E7EE1273E52A400E11C9A /* MemoTableViewCell.swift in Sources */,
 				DD3E7ECF273BB0E800E11C9A /* CreateMemoViewController.swift in Sources */,
 				DD727733273B3CBD003C4AC7 /* MemoListTableViewController.swift in Sources */,
 				DD3E7EDA273DDC8A00E11C9A /* Memo.swift in Sources */,

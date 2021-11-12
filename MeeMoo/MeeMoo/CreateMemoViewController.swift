@@ -59,7 +59,7 @@ final class CreateMemoViewController: UIViewController {
   }
   
   @objc func shareMemo() {
-    print(#function)
+    
   }
   
   @objc func finishEditing() {
@@ -75,6 +75,7 @@ final class CreateMemoViewController: UIViewController {
     let newMemo = Memo()
     newMemo.title = lines.first!
     newMemo.createdDate = Date()
+    newMemo.isPinned = false
     
     if lines.count > 1 {
       
@@ -94,20 +95,4 @@ final class CreateMemoViewController: UIViewController {
 
 extension CreateMemoViewController: UITextViewDelegate {
   
-  /*
-   키보드는 내려가지 않습니다.
-   */
-  
-  func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-    return false
-  }
-  
-//  func textViewDidChange(_ textView: UITextView) {
-//
-//    if indexOfFirstLineBreak == nil {
-//      indexOfFirstLineBreak = textView.text.firstIndex(of: "\n")
-//    }
-//
-//    print(textView.text.firstIndex(of: "\n"))
-//  }
 }
