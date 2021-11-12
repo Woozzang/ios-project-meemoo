@@ -165,9 +165,7 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
   
   private func registerCells() {
     
-    let nib = UINib(nibName: "MemoCell", bundle: nil)
-    
-    tableView.register(nib, forCellReuseIdentifier: MemoTableViewCell.identifier)
+    tableView.register(MemoTableViewCell.loadNib(), forCellReuseIdentifier: MemoTableViewCell.identifier)
   }
   
   private func setUpSearchController() {

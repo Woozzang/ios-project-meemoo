@@ -11,8 +11,6 @@ class MemoTableViewCell: UITableViewCell {
   
   static var identifier = String(describing: MemoTableViewCell.self)
   
-  static var nibName = "MemoCell"
-  
   private let dateFormatter: DateFormatter = {
     
     $0.locale = Locale(identifier: "kr_KR")
@@ -58,7 +56,7 @@ class MemoTableViewCell: UITableViewCell {
   private func createDateString(with createdDate: Date) -> String{
     
     /*
-     오늘 인지
+     오늘이면
      */
 
     if Calendar.current.isDateInToday(createdDate) {
@@ -69,7 +67,7 @@ class MemoTableViewCell: UITableViewCell {
     }
     
     /*
-    이번 주 인지
+    이번 주이면
     */
     
     if Calendar.current.isDateInWeekend(createdDate) {
@@ -86,5 +84,12 @@ class MemoTableViewCell: UITableViewCell {
     dateFormatter.dateFormat = "yyyy.MM.dd a hh:mm"
     
     return dateFormatter.string(from: createdDate)
+  }
+}
+
+extension MemoTableViewCell: NibInstantiable {
+  
+  static var nibName: String  {
+    return "MemoCell"
   }
 }
