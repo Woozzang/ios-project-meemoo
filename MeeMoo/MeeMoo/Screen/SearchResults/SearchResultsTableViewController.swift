@@ -15,7 +15,7 @@ final class SearchResultsTableViewController: UITableViewController {
     
     didSet {
       
-      sectionHeaderTitle = searchResults.isEmpty ? "검색 결과 없음" : "\(searchResults.count)개 찾음"
+      sectionHeaderTitle = searchResults.isEmpty ? "검색 결과가 없어요" : "\(searchResults.count)개 찾았어요"
       
       if let tableView = tableView {
         tableView.reloadData()
@@ -46,6 +46,15 @@ final class SearchResultsTableViewController: UITableViewController {
   private func setUpTableView() {
     tableView.backgroundColor = .white
   }
+  
+  func updateSearchResults(with targetKeyword: String) {
+    
+    self.targetKeyword = targetKeyword
+    
+    searchResults = persistentService.search(by: targetKeyword)
+    
+  }
+  
 
   // MARK: - Table view data source
 
@@ -64,10 +73,10 @@ final class SearchResultsTableViewController: UITableViewController {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as? MemoTableViewCell else { return UITableViewCell()}
     
     cell.titleLabel.text = searchResults[indexPath.row].title
-    cell.titleLabel.makeTargetGreen(targetString: targetKeyword ?? "")
+    cell.titleLabel.makeKeywordGreen(targetKeyword ?? "")
     
     cell.payloadLabel.text = searchResults[indexPath.row].payload
-    cell.payloadLabel.makeTargetGreen(targetString: targetKeyword ?? "")
+    cell.payloadLabel.makeKeywordGreen(targetKeyword ?? "")
     
     cell.createdDate = searchResults[indexPath.row].createdDate
     

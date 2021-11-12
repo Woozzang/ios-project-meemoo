@@ -10,11 +10,11 @@ import UIKit
 
 extension UILabel {
   
-    func makeTargetGreen(targetString: String) {
+    func makeKeywordGreen(_ keyword: String) {
       
       let fullText = self.text ?? ""
       
-      let range = (fullText as NSString).range(of: targetString)
+      let range = (fullText as NSString).range(of: keyword)
       
       let textColor = UIColor.systemGreen
       
