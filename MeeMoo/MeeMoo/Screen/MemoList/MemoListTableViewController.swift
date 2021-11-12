@@ -19,45 +19,43 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
     return $0
   }(NumberFormatter())
   
-  
-  private var numOfMemo: Int = 0 {
-    didSet {
-      
-      guard let numberText = numberFormatter.string(from: numOfMemo as NSNumber) else { return }
-      
-      title = numberText + "개의 메모"
-    }
-  }
-  
   private var persistentService = PersistentService.standard
   
-  private var pinnedMemoList: [Memo] = [] {
+  private var pinnedMemos: [Memo] = [] {
     didSet {
       tableView.reloadData()
       
-      numOfMemo = notPinnedMemoList.count + pinnedMemoList.count
+      numberOfMemos = unpinnedMemos.count + pinnedMemos.count
     }
   }
   
-  private var notPinnedMemoList: [Memo] = [] {
+  private var unpinnedMemos: [Memo] = [] {
     didSet {
       tableView.reloadData()
       
-      numOfMemo = notPinnedMemoList.count + pinnedMemoList.count
+      numberOfMemos = unpinnedMemos.count + pinnedMemos.count
     }
   }
   
   var token: NotificationToken?
+  
+  private var numberOfMemos: Int = 0 {
+    didSet {
+      
+      guard let numberText = numberFormatter.string(from: numberOfMemos as NSNumber) else { return }
+      
+      title = numberText + "개의 메모"
+    }
+  }
   
   // MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    pinnedMemoList = persistentService.read(isPinned: true)
-    notPinnedMemoList = persistentService.read()
-    
-    registerCell()
+    updateMemos()
+  
+    registerCells()
     
     setUpNavigationItem()
     
@@ -69,8 +67,7 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    pinnedMemoList = persistentService.read(isPinned: true)
-    notPinnedMemoList = persistentService.read()
+   updateMemos()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -117,10 +114,10 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
     var memo: Memo
     
     if indexPath.section == 0 {
-      memo = pinnedMemoList[indexPath.row]
+      memo = pinnedMemos[indexPath.row]
       
     } else {
-      memo = notPinnedMemoList[indexPath.row]
+      memo = unpinnedMemos[indexPath.row]
     }
     
     vc.memo = memo
@@ -131,13 +128,21 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
   }
   
   private func setUpNavigationItem() {
-        
+    
     navigationItem.largeTitleDisplayMode = .always
     
     /*
      시작시 largeTitle 이 바로 보이지 않고 끌어 댕겨야 그 이후부터 보이기 시작해서 사용
      */
     tableView.contentOffset = CGPoint(x: 0, y: -100)
+  }
+  
+  func updateMemos() {
+    
+    pinnedMemos = persistentService.read(isPinned: true)
+    
+    unpinnedMemos = persistentService.read()
+    
   }
   
   func observeMemoModels() {
@@ -149,17 +154,16 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
       switch change {
         case .update(_, _, _, _):
           
-          self.pinnedMemoList = self.persistentService.read(isPinned: true)
-          self.notPinnedMemoList = self.persistentService.read()
+          self.pinnedMemos = self.persistentService.read(isPinned: true)
+          self.unpinnedMemos = self.persistentService.read()
           
         default :
           break
       }
     }
-    
   }
   
-  private func registerCell() {
+  private func registerCells() {
     
     let nib = UINib(nibName: "MemoCell", bundle: nil)
     
@@ -198,13 +202,13 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
        고정된 메모
        */
       case 0:
-        return pinnedMemoList.count
+        return pinnedMemos.count
         
       /*
        그냥 메모
        */
       case 1:
-        return notPinnedMemoList.count
+        return unpinnedMemos.count
         
       default:
         return 0
@@ -215,7 +219,7 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
     
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as? MemoTableViewCell else { return UITableViewCell() }
     
-    let data = indexPath.section == 0 ? pinnedMemoList[indexPath.row] : notPinnedMemoList[indexPath.row]
+    let data = indexPath.section == 0 ? pinnedMemos[indexPath.row] : unpinnedMemos[indexPath.row]
     
     cell.titleLabel.text = data.title
     cell.payloadLabel.text = data.payload
@@ -236,7 +240,7 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
        고정된 메모
        */
       case 0:
-        guard !pinnedMemoList.isEmpty else { return nil }
+        guard !pinnedMemos.isEmpty else { return nil }
 
         title = "고정된 메모"
       /*
@@ -259,7 +263,7 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     
-    if section == 0, pinnedMemoList.isEmpty {
+    if section == 0, pinnedMemos.isEmpty {
       return 0
     }
     
@@ -277,9 +281,9 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
       
       if indexPath.section == 0 {
         
-        guard indexPath.row < pinnedMemoList.count else { closure(false); return }
+        guard indexPath.row < pinnedMemos.count else { closure(false); return }
         
-        let target = pinnedMemoList[indexPath.row]
+        let target = pinnedMemos[indexPath.row]
         
         try! persistentService.localDB.write {
           target.isPinned.toggle()
@@ -290,7 +294,7 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
         
       } else {
         
-        guard pinnedMemoList.count < 5 else {
+        guard pinnedMemos.count < 5 else {
           
           let alertController = UIAlertController(title: "고정 메모 개수 제한", message: "최대 5개 까지만 고정할 수 있어요", preferredStyle: .alert)
           
@@ -305,9 +309,9 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
           return
         }
         
-        guard indexPath.row < notPinnedMemoList.count else { closure(false); return }
+        guard indexPath.row < unpinnedMemos.count else { closure(false); return }
         
-        let target = notPinnedMemoList[indexPath.row]
+        let target = unpinnedMemos[indexPath.row]
           
         
         try! persistentService.localDB.write {
@@ -336,9 +340,9 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
       
       if indexPath.section == 0 {
         
-        guard indexPath.row < pinnedMemoList.count else { closure(false); return }
+        guard indexPath.row < pinnedMemos.count else { closure(false); return }
         
-        let target = pinnedMemoList[indexPath.row]
+        let target = pinnedMemos[indexPath.row]
         
         let alertController = UIAlertController(title: "정말 삭제하시나요?", message: "한번 삭제되면 다시 불러올 수 없어요", preferredStyle: .alert)
         
@@ -360,9 +364,9 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
 
       } else {
         
-        guard indexPath.row < notPinnedMemoList.count else { closure(false); return }
+        guard indexPath.row < unpinnedMemos.count else { closure(false); return }
         
-        let target = notPinnedMemoList[indexPath.row]
+        let target = unpinnedMemos[indexPath.row]
         
         let alertController = UIAlertController(title: "정말 삭제하시나요?", message: "한번 삭제되면 다시 불러올 수 없어요", preferredStyle: .alert)
         
@@ -413,13 +417,7 @@ extension MemoListTableViewController: UISearchResultsUpdating {
     
     guard let targetKeyword = searchController.searchBar.text else { return }
     
-    let searchResults = persistentService.search(by: targetKeyword)
-    
-    searchResultsController.searchResults = searchResults
-    
-    searchResultsController.targetKeyword = targetKeyword
-    
-    searchResultsController.tableView.reloadData()
+    searchResultsController.updateSearchResults(with: targetKeyword)
     
     return
   }
