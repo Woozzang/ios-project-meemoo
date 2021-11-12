@@ -39,20 +39,20 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="1,234개의 메모" id="g1v-mK-K9X"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="g1v-mK-K9X"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="ezi-h8-EGG" kind="show" identifier="CreateMemoSegue" id="oTn-hv-xqK"/>
+                        <segue destination="ezi-h8-EGG" kind="show" identifier="EditMemoSegue" id="oTn-hv-xqK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Fg-vH-9eV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="860.86956521739137" y="65.625"/>
         </scene>
-        <!--CreateMemo-->
+        <!--EditMemo-->
         <scene sceneID="z0s-bZ-toR">
             <objects>
-                <viewControllerPlaceholder storyboardName="CreateMemo" id="ezi-h8-EGG" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="EditMemo" id="ezi-h8-EGG" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="oNc-Ms-KMo">
                         <barButtonItem key="backBarButtonItem" title="메모" id="dbV-Zf-ckW"/>
                     </navigationItem>

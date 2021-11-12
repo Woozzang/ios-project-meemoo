@@ -18,6 +18,10 @@
 		DD3E7EE3273E635F00E11C9A /* MemoSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD3E7EE2273E635F00E11C9A /* MemoSectionHeader.xib */; };
 		DD3E7EE5273E646000E11C9A /* MemoSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EE4273E646000E11C9A /* MemoSectionHeaderView.swift */; };
 		DD3E7EE8273E65A500E11C9A /* NibInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EE7273E65A500E11C9A /* NibInstantiable.swift */; };
+		DD3E7EED273EA52F00E11C9A /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EEC273EA52F00E11C9A /* SearchResultsTableViewController.swift */; };
+		DD3E7EEF273EA54100E11C9A /* SearchResults.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD3E7EEE273EA54100E11C9A /* SearchResults.storyboard */; };
+		DD3E7EF2273EA83B00E11C9A /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EF1273EA83B00E11C9A /* UILabel+Extensions.swift */; };
+		DD3E7EF6273EB32400E11C9A /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EF5273EB32400E11C9A /* StoryboardInstantiable.swift */; };
 		DD72771F273B3BD0003C4AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD72771E273B3BD0003C4AC7 /* AppDelegate.swift */; };
 		DD727721273B3BD0003C4AC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD727720273B3BD0003C4AC7 /* SceneDelegate.swift */; };
 		DD727728273B3BD2003C4AC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD727727273B3BD2003C4AC7 /* Assets.xcassets */; };
@@ -36,6 +40,10 @@
 		DD3E7EE2273E635F00E11C9A /* MemoSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoSectionHeader.xib; sourceTree = "<group>"; };
 		DD3E7EE4273E646000E11C9A /* MemoSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoSectionHeaderView.swift; sourceTree = "<group>"; };
 		DD3E7EE7273E65A500E11C9A /* NibInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibInstantiable.swift; sourceTree = "<group>"; };
+		DD3E7EEC273EA52F00E11C9A /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
+		DD3E7EEE273EA54100E11C9A /* SearchResults.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResults.storyboard; sourceTree = "<group>"; };
+		DD3E7EF1273EA83B00E11C9A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		DD3E7EF5273EB32400E11C9A /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
 		DD72771B273B3BD0003C4AC7 /* MeeMoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeeMoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD72771E273B3BD0003C4AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD727720273B3BD0003C4AC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,8 +99,17 @@
 			isa = PBXGroup;
 			children = (
 				DD3E7EE7273E65A500E11C9A /* NibInstantiable.swift */,
+				DD3E7EF5273EB32400E11C9A /* StoryboardInstantiable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		DD3E7EF0273EA82600E11C9A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DD3E7EF1273EA83B00E11C9A /* UILabel+Extensions.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		DD727712273B3BD0003C4AC7 = {
@@ -114,6 +131,7 @@
 		DD72771D273B3BD0003C4AC7 /* MeeMoo */ = {
 			isa = PBXGroup;
 			children = (
+				DD3E7EF0273EA82600E11C9A /* Extension */,
 				DD3E7EE6273E659800E11C9A /* Protocol */,
 				DD3E7EDB273DF00000E11C9A /* Service */,
 				DD3E7ED8273DDC7D00E11C9A /* Model */,
@@ -126,6 +144,8 @@
 				DD3E7EE0273E52A400E11C9A /* MemoTableViewCell.swift */,
 				DD3E7EE2273E635F00E11C9A /* MemoSectionHeader.xib */,
 				DD3E7EE4273E646000E11C9A /* MemoSectionHeaderView.swift */,
+				DD3E7EEC273EA52F00E11C9A /* SearchResultsTableViewController.swift */,
+				DD3E7EEE273EA54100E11C9A /* SearchResults.storyboard */,
 			);
 			path = MeeMoo;
 			sourceTree = "<group>";
@@ -199,6 +219,7 @@
 				DD72772B273B3BD2003C4AC7 /* LaunchScreen.storyboard in Resources */,
 				DD3E7EE3273E635F00E11C9A /* MemoSectionHeader.xib in Resources */,
 				DD3E7ED1273D3DF400E11C9A /* EditMemo.storyboard in Resources */,
+				DD3E7EEF273EA54100E11C9A /* SearchResults.storyboard in Resources */,
 				DD3E7EDF273E50D400E11C9A /* MemoCell.xib in Resources */,
 				DD727728273B3BD2003C4AC7 /* Assets.xcassets in Resources */,
 			);
@@ -211,14 +232,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD3E7EF2273EA83B00E11C9A /* UILabel+Extensions.swift in Sources */,
 				DD3E7EDD273DF02B00E11C9A /* PersistentService.swift in Sources */,
 				DD72771F273B3BD0003C4AC7 /* AppDelegate.swift in Sources */,
+				DD3E7EED273EA52F00E11C9A /* SearchResultsTableViewController.swift in Sources */,
 				DD727721273B3BD0003C4AC7 /* SceneDelegate.swift in Sources */,
 				DD3E7EE1273E52A400E11C9A /* MemoTableViewCell.swift in Sources */,
 				DD3E7ECF273BB0E800E11C9A /* EditMemoViewController.swift in Sources */,
 				DD3E7EE5273E646000E11C9A /* MemoSectionHeaderView.swift in Sources */,
 				DD727733273B3CBD003C4AC7 /* MemoListTableViewController.swift in Sources */,
 				DD3E7EE8273E65A500E11C9A /* NibInstantiable.swift in Sources */,
+				DD3E7EF6273EB32400E11C9A /* StoryboardInstantiable.swift in Sources */,
 				DD3E7EDA273DDC8A00E11C9A /* Memo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

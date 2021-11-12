@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class EditMemoViewController: UIViewController {
 
@@ -35,8 +36,7 @@ final class EditMemoViewController: UIViewController {
     UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(finishEditing)),
     UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareMemo))
   ]
-  
-//  var indexOfFirstLineBreak: Index?
+
   
   
   override func viewDidLoad() {
@@ -55,6 +55,7 @@ final class EditMemoViewController: UIViewController {
    툴바를 다시 보여준다
    */
   override func viewWillDisappear(_ animated: Bool) {
+    
     super.viewWillDisappear(animated)
     
     navigationController?.toolbar.isHidden = false
@@ -81,6 +82,11 @@ final class EditMemoViewController: UIViewController {
   
   @objc func shareMemo() {
     
+    guard let text = textView.text else { return }
+    
+    let vc = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+    
+    present(vc, animated: true, completion: nil)
   }
   
   
@@ -90,7 +96,22 @@ final class EditMemoViewController: UIViewController {
       isMemoEditing = false
     }
     
-    guard let text = textView.text, !text.isEmpty else { return }
+    guard let text = textView.text, !text.isEmpty else {
+      
+      /*
+       사용자가 모든 내용을 다 지웠다면
+       */
+      if let memo = memo {
+        try! persistentService.localDB.write {
+          
+          persistentService.localDB.delete(memo)
+        }
+      }
+      
+      self.navigationController?.popViewController(animated: true)
+      
+      return
+    }
     
     let lines = text.split(separator: "\n").map { String($0) }
     
@@ -100,6 +121,7 @@ final class EditMemoViewController: UIViewController {
     if let memo = memo {
       
       try! persistentService.localDB.write({
+        
         memo.title = lines.first!
         memo.payload = lines[1...].joined(separator: "\n")
       })
@@ -122,6 +144,8 @@ final class EditMemoViewController: UIViewController {
      DB에 넣기
      */
     persistentService.write(newMemo)
+    
+    self.navigationController?.popViewController(animated: true)
   }
   
 }
@@ -132,5 +156,12 @@ extension EditMemoViewController: UITextViewDelegate {
   
   func textViewDidBeginEditing(_ textView: UITextView) {
     navigationItem.rightBarButtonItems = barItemsOnEditing
+  }
+}
+
+extension EditMemoViewController: StoryboardInstantiable {
+  
+  static var storyboardName: String {
+    return "EditMemo"
   }
 }

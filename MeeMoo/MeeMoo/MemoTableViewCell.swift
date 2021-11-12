@@ -11,6 +11,8 @@ class MemoTableViewCell: UITableViewCell {
   
   static var identifier = String(describing: MemoTableViewCell.self)
   
+  static var nibName = "MemoCell"
+  
   private let dateFormatter: DateFormatter = {
     
     $0.locale = Locale(identifier: "kr_KR")
