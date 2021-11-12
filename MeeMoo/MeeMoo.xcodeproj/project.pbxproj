@@ -112,6 +112,66 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		DD3E7EF7273EDBAD00E11C9A /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				DD3E7EF0273EA82600E11C9A /* Extension */,
+				DD3E7EE6273E659800E11C9A /* Protocol */,
+				DD3E7EDB273DF00000E11C9A /* Service */,
+				DD3E7ED8273DDC7D00E11C9A /* Model */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		DD3E7EF8273EDBBB00E11C9A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				DD3E7EFC273EDC1B00E11C9A /* SearchResults */,
+				DD3E7EFA273EDBCF00E11C9A /* EditMemo */,
+				DD3E7EF9273EDBC300E11C9A /* MemoList */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		DD3E7EF9273EDBC300E11C9A /* MemoList */ = {
+			isa = PBXGroup;
+			children = (
+				DD3E7EFB273EDBE300E11C9A /* Xib */,
+				DD727734273B3CD5003C4AC7 /* MemoList.storyboard */,
+				DD727732273B3CBD003C4AC7 /* MemoListTableViewController.swift */,
+				DD3E7EE4273E646000E11C9A /* MemoSectionHeaderView.swift */,
+				DD3E7EE0273E52A400E11C9A /* MemoTableViewCell.swift */,
+			);
+			path = MemoList;
+			sourceTree = "<group>";
+		};
+		DD3E7EFA273EDBCF00E11C9A /* EditMemo */ = {
+			isa = PBXGroup;
+			children = (
+				DD3E7ECE273BB0E800E11C9A /* EditMemoViewController.swift */,
+				DD3E7ED0273D3DF400E11C9A /* EditMemo.storyboard */,
+			);
+			path = EditMemo;
+			sourceTree = "<group>";
+		};
+		DD3E7EFB273EDBE300E11C9A /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				DD3E7EDE273E50D400E11C9A /* MemoCell.xib */,
+				DD3E7EE2273E635F00E11C9A /* MemoSectionHeader.xib */,
+			);
+			path = Xib;
+			sourceTree = "<group>";
+		};
+		DD3E7EFC273EDC1B00E11C9A /* SearchResults */ = {
+			isa = PBXGroup;
+			children = (
+				DD3E7EEC273EA52F00E11C9A /* SearchResultsTableViewController.swift */,
+				DD3E7EEE273EA54100E11C9A /* SearchResults.storyboard */,
+			);
+			path = SearchResults;
+			sourceTree = "<group>";
+		};
 		DD727712273B3BD0003C4AC7 = {
 			isa = PBXGroup;
 			children = (
@@ -131,21 +191,9 @@
 		DD72771D273B3BD0003C4AC7 /* MeeMoo */ = {
 			isa = PBXGroup;
 			children = (
-				DD3E7EF0273EA82600E11C9A /* Extension */,
-				DD3E7EE6273E659800E11C9A /* Protocol */,
-				DD3E7EDB273DF00000E11C9A /* Service */,
-				DD3E7ED8273DDC7D00E11C9A /* Model */,
+				DD3E7EF8273EDBBB00E11C9A /* Screen */,
+				DD3E7EF7273EDBAD00E11C9A /* Global */,
 				DD3E7ED2273D409100E11C9A /* Supporting Files */,
-				DD727732273B3CBD003C4AC7 /* MemoListTableViewController.swift */,
-				DD3E7ECE273BB0E800E11C9A /* EditMemoViewController.swift */,
-				DD727734273B3CD5003C4AC7 /* MemoList.storyboard */,
-				DD3E7ED0273D3DF400E11C9A /* EditMemo.storyboard */,
-				DD3E7EDE273E50D400E11C9A /* MemoCell.xib */,
-				DD3E7EE0273E52A400E11C9A /* MemoTableViewCell.swift */,
-				DD3E7EE2273E635F00E11C9A /* MemoSectionHeader.xib */,
-				DD3E7EE4273E646000E11C9A /* MemoSectionHeaderView.swift */,
-				DD3E7EEC273EA52F00E11C9A /* SearchResultsTableViewController.swift */,
-				DD3E7EEE273EA54100E11C9A /* SearchResults.storyboard */,
 			);
 			path = MeeMoo;
 			sourceTree = "<group>";
