@@ -22,6 +22,7 @@
 		DD3E7EEF273EA54100E11C9A /* SearchResults.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD3E7EEE273EA54100E11C9A /* SearchResults.storyboard */; };
 		DD3E7EF2273EA83B00E11C9A /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EF1273EA83B00E11C9A /* UILabel+Extensions.swift */; };
 		DD3E7EF6273EB32400E11C9A /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EF5273EB32400E11C9A /* StoryboardInstantiable.swift */; };
+		DD3E7EFE273EE34700E11C9A /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7EFD273EE34700E11C9A /* UIAlertController+Extensions.swift */; };
 		DD72771F273B3BD0003C4AC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD72771E273B3BD0003C4AC7 /* AppDelegate.swift */; };
 		DD727721273B3BD0003C4AC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD727720273B3BD0003C4AC7 /* SceneDelegate.swift */; };
 		DD727728273B3BD2003C4AC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD727727273B3BD2003C4AC7 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		DD3E7EEE273EA54100E11C9A /* SearchResults.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchResults.storyboard; sourceTree = "<group>"; };
 		DD3E7EF1273EA83B00E11C9A /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		DD3E7EF5273EB32400E11C9A /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
+		DD3E7EFD273EE34700E11C9A /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		DD72771B273B3BD0003C4AC7 /* MeeMoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeeMoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD72771E273B3BD0003C4AC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD727720273B3BD0003C4AC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				DD3E7EF1273EA83B00E11C9A /* UILabel+Extensions.swift */,
+				DD3E7EFD273EE34700E11C9A /* UIAlertController+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				DD727721273B3BD0003C4AC7 /* SceneDelegate.swift in Sources */,
 				DD3E7EE1273E52A400E11C9A /* MemoTableViewCell.swift in Sources */,
 				DD3E7ECF273BB0E800E11C9A /* EditMemoViewController.swift in Sources */,
+				DD3E7EFE273EE34700E11C9A /* UIAlertController+Extensions.swift in Sources */,
 				DD3E7EE5273E646000E11C9A /* MemoSectionHeaderView.swift in Sources */,
 				DD727733273B3CBD003C4AC7 /* MemoListTableViewController.swift in Sources */,
 				DD3E7EE8273E65A500E11C9A /* NibInstantiable.swift in Sources */,

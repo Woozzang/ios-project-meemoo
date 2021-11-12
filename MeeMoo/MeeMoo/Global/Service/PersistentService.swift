@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class PersistentService {
+final class PersistentService {
   
   static var standard = PersistentService()
   
@@ -24,19 +24,30 @@ class PersistentService {
     localDB.configuration.fileURL?.path
   }
   
-  var pinnedMemoList: [Memo] = []
+  var pinnedMemoList: [Memo] = [] {
+    didSet {
+      NotificationCenter.default.post(name: Self.pinnedMemosDidChange, object: nil)
+    }
+  }
   
-  var notPinnedMemoList: [Memo] = []
+  var unPinnedMemoList: [Memo] = [] {
+    didSet {
+      NotificationCenter.default.post(name: Self.unpinnedMemosDidChange, object: nil)
+    }
+  }
+  
+  // MARK: - Life Cycle
   
   private init() {
-    observeMemoModels()
+    
+    observeMemoObjects()
   }
   
   /*
    앱 최초 실행인지 확인하는 계산속성
    */
   
-  var didLaunchBefore: Bool {
+  private var didLaunchBefore: Bool {
     
     let result = userDefaults.bool(forKey: didLaunchBeforeKey)
     
@@ -54,7 +65,7 @@ class PersistentService {
     return !didLaunchBefore
   }
   
-  func observeMemoModels() {
+  private func observeMemoObjects() {
     
     token = localDB.objects(Memo.self).observe(on: .main) { [weak self] change in
       
@@ -64,14 +75,23 @@ class PersistentService {
         case .update(_, _, _, _):
           
           self.pinnedMemoList = self.read(isPinned: true)
-          self.notPinnedMemoList = self.read()
+          self.unPinnedMemoList = self.read()
           
         default:
           break
       }
     }
-    
   }
+  
+  // FIXME: observe 함수 추상화
+  
+//  func observe< Element >(_ type: Element.Type, on queue: DispatchQueue?, handler: (RealmCollectionChange<Results<Memo>>) -> Void) -> NotificationToken {
+//
+//    let token = localDB.objects(type).ob
+//
+//    return token
+//
+//  }
   
   func write(_ memo: Memo) {
     
@@ -92,6 +112,7 @@ class PersistentService {
   /*
    전달된 memo 를 삭제하고, 반영된 db 를 반환한다.
    */
+  @discardableResult
   func delete(_ memo: Memo) -> [Memo] {
     
     try! localDB.write {
@@ -115,4 +136,11 @@ class PersistentService {
     return searchResults
   }
   
+}
+
+extension PersistentService {
+  
+  static let pinnedMemosDidChange = Notification.Name.init(rawValue: "pinnedMemosDidChange")
+  
+  static let unpinnedMemosDidChange = Notification.Name.init(rawValue: "unpinnedMemosDidChange")
 }
