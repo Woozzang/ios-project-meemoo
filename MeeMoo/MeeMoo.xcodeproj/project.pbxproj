@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DD3E7ECF273BB0E800E11C9A /* CreateMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7ECE273BB0E800E11C9A /* CreateMemoViewController.swift */; };
-		DD3E7ED1273D3DF400E11C9A /* CreateMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD3E7ED0273D3DF400E11C9A /* CreateMemo.storyboard */; };
+		DD3E7ECF273BB0E800E11C9A /* EditMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7ECE273BB0E800E11C9A /* EditMemoViewController.swift */; };
+		DD3E7ED1273D3DF400E11C9A /* EditMemo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD3E7ED0273D3DF400E11C9A /* EditMemo.storyboard */; };
 		DD3E7ED5273DDC7400E11C9A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = DD3E7ED4273DDC7400E11C9A /* Realm */; };
 		DD3E7ED7273DDC7400E11C9A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD3E7ED6273DDC7400E11C9A /* RealmSwift */; };
 		DD3E7EDA273DDC8A00E11C9A /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3E7ED9273DDC8A00E11C9A /* Memo.swift */; };
@@ -27,8 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DD3E7ECE273BB0E800E11C9A /* CreateMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMemoViewController.swift; sourceTree = "<group>"; };
-		DD3E7ED0273D3DF400E11C9A /* CreateMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateMemo.storyboard; sourceTree = "<group>"; };
+		DD3E7ECE273BB0E800E11C9A /* EditMemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMemoViewController.swift; sourceTree = "<group>"; };
+		DD3E7ED0273D3DF400E11C9A /* EditMemo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditMemo.storyboard; sourceTree = "<group>"; };
 		DD3E7ED9273DDC8A00E11C9A /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		DD3E7EDC273DF02B00E11C9A /* PersistentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentService.swift; sourceTree = "<group>"; };
 		DD3E7EDE273E50D400E11C9A /* MemoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemoCell.xib; sourceTree = "<group>"; };
@@ -119,9 +119,9 @@
 				DD3E7ED8273DDC7D00E11C9A /* Model */,
 				DD3E7ED2273D409100E11C9A /* Supporting Files */,
 				DD727732273B3CBD003C4AC7 /* MemoListTableViewController.swift */,
-				DD3E7ECE273BB0E800E11C9A /* CreateMemoViewController.swift */,
+				DD3E7ECE273BB0E800E11C9A /* EditMemoViewController.swift */,
 				DD727734273B3CD5003C4AC7 /* MemoList.storyboard */,
-				DD3E7ED0273D3DF400E11C9A /* CreateMemo.storyboard */,
+				DD3E7ED0273D3DF400E11C9A /* EditMemo.storyboard */,
 				DD3E7EDE273E50D400E11C9A /* MemoCell.xib */,
 				DD3E7EE0273E52A400E11C9A /* MemoTableViewCell.swift */,
 				DD3E7EE2273E635F00E11C9A /* MemoSectionHeader.xib */,
@@ -198,7 +198,7 @@
 				DD727735273B3CD5003C4AC7 /* MemoList.storyboard in Resources */,
 				DD72772B273B3BD2003C4AC7 /* LaunchScreen.storyboard in Resources */,
 				DD3E7EE3273E635F00E11C9A /* MemoSectionHeader.xib in Resources */,
-				DD3E7ED1273D3DF400E11C9A /* CreateMemo.storyboard in Resources */,
+				DD3E7ED1273D3DF400E11C9A /* EditMemo.storyboard in Resources */,
 				DD3E7EDF273E50D400E11C9A /* MemoCell.xib in Resources */,
 				DD727728273B3BD2003C4AC7 /* Assets.xcassets in Resources */,
 			);
@@ -215,7 +215,7 @@
 				DD72771F273B3BD0003C4AC7 /* AppDelegate.swift in Sources */,
 				DD727721273B3BD0003C4AC7 /* SceneDelegate.swift in Sources */,
 				DD3E7EE1273E52A400E11C9A /* MemoTableViewCell.swift in Sources */,
-				DD3E7ECF273BB0E800E11C9A /* CreateMemoViewController.swift in Sources */,
+				DD3E7ECF273BB0E800E11C9A /* EditMemoViewController.swift in Sources */,
 				DD3E7EE5273E646000E11C9A /* MemoSectionHeaderView.swift in Sources */,
 				DD727733273B3CBD003C4AC7 /* MemoListTableViewController.swift in Sources */,
 				DD3E7EE8273E65A500E11C9A /* NibInstantiable.swift in Sources */,

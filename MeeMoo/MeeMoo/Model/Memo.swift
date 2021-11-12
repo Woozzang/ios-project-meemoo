@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 class Memo: Object {
+  
   @Persisted(primaryKey: true) var id: ObjectId
   
   @Persisted var title: String

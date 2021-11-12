@@ -7,15 +7,27 @@
 
 import UIKit
 
-final class CreateMemoViewController: UIViewController {
+final class EditMemoViewController: UIViewController {
 
-  @IBOutlet private weak var textView: UITextView!
+  @IBOutlet weak var textView: UITextView!
   
-  var persistentServie: PersistentService?
+  static var segueIdentifier = "EditMemoSegue"
+  
+  var memo: Memo?
+  
+  var persistentService: PersistentService = PersistentService.standard
   
   var isMemoEditing = false {
     didSet {
       navigationItem.rightBarButtonItems = isMemoEditing ? barItemsOnEditing : nil
+      
+      guard let textView = textView else { return }
+      
+      if isMemoEditing {
+        textView.becomeFirstResponder()
+      } else {
+        textView.resignFirstResponder()
+      }
     }
   }
   
@@ -32,22 +44,12 @@ final class CreateMemoViewController: UIViewController {
     
     setUpTextView()
     
-    
-      
     navigationController?.toolbar.isHidden = true
-    
-    if textView.canBecomeFirstResponder {
-      textView.becomeFirstResponder()
-    }
     
     navigationItem.largeTitleDisplayMode = .never
     
   }
-  
-  private func setUpTextView() {
-    
-    textView.delegate = self
-  }
+
   
   /*
    툴바를 다시 보여준다
@@ -58,9 +60,29 @@ final class CreateMemoViewController: UIViewController {
     navigationController?.toolbar.isHidden = false
   }
   
+
+  
+  private func setUpTextView() {
+    
+    textView.delegate = self
+    
+    if isMemoEditing {
+      textView.becomeFirstResponder()
+    } else {
+      textView.resignFirstResponder()
+    }
+    
+    guard let memo = memo else { return }
+    
+    textView.text = memo.title + "\n" + (memo.payload ?? "")
+  }
+  
+  // MARK: - Objc Methodd
+  
   @objc func shareMemo() {
     
   }
+  
   
   @objc func finishEditing() {
     
@@ -71,6 +93,19 @@ final class CreateMemoViewController: UIViewController {
     guard let text = textView.text, !text.isEmpty else { return }
     
     let lines = text.split(separator: "\n").map { String($0) }
+    
+    /*
+     셀을 통해 들어왔다면
+     */
+    if let memo = memo {
+      
+      try! persistentService.localDB.write({
+        memo.title = lines.first!
+        memo.payload = lines[1...].joined(separator: "\n")
+      })
+      
+      return
+    }
     
     let newMemo = Memo()
     newMemo.title = lines.first!
@@ -86,13 +121,16 @@ final class CreateMemoViewController: UIViewController {
     /*
      DB에 넣기
      */
-    persistentServie?.write(newMemo)
+    persistentService.write(newMemo)
   }
   
 }
 
 // MARK: - UITextViewDelegate
 
-extension CreateMemoViewController: UITextViewDelegate {
+extension EditMemoViewController: UITextViewDelegate {
   
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    navigationItem.rightBarButtonItems = barItemsOnEditing
+  }
 }

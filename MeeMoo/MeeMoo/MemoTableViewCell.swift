@@ -11,7 +11,27 @@ class MemoTableViewCell: UITableViewCell {
   
   static var identifier = String(describing: MemoTableViewCell.self)
   
+  private let dateFormatter: DateFormatter = {
+    
+    $0.locale = Locale(identifier: "kr_KR")
+    
+    return $0
+  }(DateFormatter())
+  
   var isPinned: Bool = false
+  
+  var createdDate: Date? {
+    didSet {
+      
+      guard let createdDate = createdDate else {
+        return
+      }
+
+      dateLabel.text = createDateString(with: createdDate)
+    }
+  }
+  
+  // MARK: - IBOutlet
 
   @IBOutlet weak var titleLabel: UILabel!
   
@@ -19,11 +39,7 @@ class MemoTableViewCell: UITableViewCell {
   
   @IBOutlet weak var payloadLabel: UILabel!
   
-  var createdDate: Date? {
-    didSet {
-      
-    }
-  }
+  // MARK: - Life Cycle
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -33,5 +49,40 @@ class MemoTableViewCell: UITableViewCell {
     
     payloadLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
     payloadLabel.textColor = .systemGray
+  }
+  
+  // MARK: - Method
+  
+  private func createDateString(with createdDate: Date) -> String{
+    
+    /*
+     오늘 인지
+     */
+
+    if Calendar.current.isDateInToday(createdDate) {
+      
+      dateFormatter.dateFormat = "a hh시 mm분"
+      
+      return dateFormatter.string(from: createdDate)
+    }
+    
+    /*
+    이번 주 인지
+    */
+    
+    if Calendar.current.isDateInWeekend(createdDate) {
+      
+      dateFormatter.dateFormat = "EEEE HH시 mm분"
+      
+      return dateFormatter.string(from: createdDate)
+    }
+    
+    /*
+    그 외
+     */
+    
+    dateFormatter.dateFormat = "yyyy.MM.dd a hh:mm"
+    
+    return dateFormatter.string(from: createdDate)
   }
 }
