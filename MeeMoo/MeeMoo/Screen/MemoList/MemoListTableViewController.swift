@@ -10,9 +10,22 @@ import RealmSwift
 
 final class MemoListTableViewController: UITableViewController, UISearchControllerDelegate {
   
+  let numberFormatter: NumberFormatter = {
+    
+    $0.locale = Locale.current
+    $0.numberStyle = NumberFormatter.Style.decimal
+    $0.usesGroupingSeparator = true
+    
+    return $0
+  }(NumberFormatter())
+  
+  
   private var numOfMemo: Int = 0 {
     didSet {
-      title = "\(numOfMemo)개의 메모"
+      
+      guard let numberText = numberFormatter.string(from: numOfMemo as NSNumber) else { return }
+      
+      title = numberText + "개의 메모"
     }
   }
   
@@ -29,11 +42,14 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
   private var notPinnedMemoList: [Memo] = [] {
     didSet {
       tableView.reloadData()
+      
       numOfMemo = notPinnedMemoList.count + pinnedMemoList.count
     }
   }
   
   var token: NotificationToken?
+  
+  // MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -69,37 +85,6 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
       
       present(alertController, animated: true, completion: nil)
     }
-  }
-  
-  deinit {
-    token = nil
-  }
-  
-  private func setUpNavigationItem() {
-    
-
-    
-    navigationItem.largeTitleDisplayMode = .always
-    
-  }
-  
-  func observeMemoModels() {
-    
-    token = persistentService.localDB.objects(Memo.self).observe(on: .main) { [weak self] change in
-      
-      guard let self = self else { return }
-      
-      switch change {
-        case .update(_, _, _, _):
-          
-          self.pinnedMemoList = self.persistentService.read(isPinned: true)
-          self.notPinnedMemoList = self.persistentService.read()
-          
-        default :
-          break
-      }
-    }
-    
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -139,6 +124,39 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
     }
     
     vc.memo = memo
+  }
+  
+  deinit {
+    token = nil
+  }
+  
+  private func setUpNavigationItem() {
+        
+    navigationItem.largeTitleDisplayMode = .always
+    
+    /*
+     시작시 largeTitle 이 바로 보이지 않고 끌어 댕겨야 그 이후부터 보이기 시작해서 사용
+     */
+    tableView.contentOffset = CGPoint(x: 0, y: -100)
+  }
+  
+  func observeMemoModels() {
+    
+    token = persistentService.localDB.objects(Memo.self).observe(on: .main) { [weak self] change in
+      
+      guard let self = self else { return }
+      
+      switch change {
+        case .update(_, _, _, _):
+          
+          self.pinnedMemoList = self.persistentService.read(isPinned: true)
+          self.notPinnedMemoList = self.persistentService.read()
+          
+        default :
+          break
+      }
+    }
+    
   }
   
   private func registerCell() {
