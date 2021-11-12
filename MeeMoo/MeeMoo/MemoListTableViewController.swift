@@ -14,17 +14,6 @@ class MemoListTableViewController: UITableViewController {
         super.viewDidLoad()
       
       
-      let search = UISearchController(searchResultsController: nil)
-      
-      search.searchResultsUpdater = self
-      
-      search.obscuresBackgroundDuringPresentation = false
-      
-      search.searchBar.placeholder = "검색"
-      
-      navigationItem.searchController = search
-      
-      
       
       navigationItem.backButtonTitle = "메모"
     }
@@ -32,16 +21,30 @@ class MemoListTableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
     switch sender {
-        
-      case let sender as UIBarButtonItem:
+      case _ as UIBarButtonItem:
         guard let vc = segue.destination as? CreateMemoViewController else  { return }
         vc.isMemoEditing = true
         
       default:
         break
     }
+  }
+  
+  
+  private func setUpSearchController() {
+    
+    let search = UISearchController(searchResultsController: nil)
+    
+    search.searchResultsUpdater = self
+    
+    search.obscuresBackgroundDuringPresentation = false
+    
+    search.searchBar.placeholder = "검색"
+    
+    navigationItem.searchController = search
     
   }
+  
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,6 +67,6 @@ extension MemoListTableViewController: UISearchResultsUpdating {
   
   func updateSearchResults(for searchController: UISearchController) {
     
-    print(#function)
+//    searchController.searchResultsController.tableView.reloadData()
   }
 }

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CreateMemoViewController: UIViewController {
+final class CreateMemoViewController: UIViewController {
 
-  @IBOutlet weak var textView: UITextView!
+  @IBOutlet private weak var textView: UITextView!
   
   var isMemoEditing = false {
     didSet {
@@ -22,9 +22,15 @@ class CreateMemoViewController: UIViewController {
     UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(shareMemo))
   ]
   
+//  var indexOfFirstLineBreak: Index?
+  
   
   override func viewDidLoad() {
-      super.viewDidLoad()
+    super.viewDidLoad()
+    
+    setUpTextView()
+    
+    
       
     navigationController?.toolbar.isHidden = true
     
@@ -34,6 +40,11 @@ class CreateMemoViewController: UIViewController {
     
     navigationItem.largeTitleDisplayMode = .never
     
+  }
+  
+  private func setUpTextView() {
+    
+    textView.delegate = self
   }
   
   /*
@@ -50,7 +61,28 @@ class CreateMemoViewController: UIViewController {
   }
   
   @objc func finishEditing() {
-    print(#function)
+    
+    defer {
+      isMemoEditing = false
+    }
+    
+    guard let text = textView.text, !text.isEmpty else { return }
+    
+    let lines = text.split(separator: "\n").map { String($0) }
+    
+    let newMemo = Memo()
+    newMemo.title = lines.first!
+    
+    if lines.count > 1 {
+      
+      let payload = lines[1...].joined(separator: "\n")
+      newMemo.payload = payload
+    }
+    
+    /*
+     DB에 넣기
+     */
+    
   }
   
 }
@@ -66,4 +98,13 @@ extension CreateMemoViewController: UITextViewDelegate {
   func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
     return false
   }
+  
+//  func textViewDidChange(_ textView: UITextView) {
+//
+//    if indexOfFirstLineBreak == nil {
+//      indexOfFirstLineBreak = textView.text.firstIndex(of: "\n")
+//    }
+//
+//    print(textView.text.firstIndex(of: "\n"))
+//  }
 }
