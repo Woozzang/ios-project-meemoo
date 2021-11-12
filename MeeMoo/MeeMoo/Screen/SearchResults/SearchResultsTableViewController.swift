@@ -44,6 +44,7 @@ final class SearchResultsTableViewController: UITableViewController {
   }
   
   private func setUpTableView() {
+    
     tableView.backgroundColor = .white
   }
   
@@ -102,6 +103,8 @@ final class SearchResultsTableViewController: UITableViewController {
     return 60
   }
   
+  // MARK: - Table view delate
+  
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     guard let vc = EditMemoViewController.loadFromStoryBoard() as? EditMemoViewController else { return }
@@ -154,8 +157,6 @@ final class SearchResultsTableViewController: UITableViewController {
         
       let target = searchResults[indexPath.row]
       
-      let alertController = UIAlertController(title: "정말 삭제하시나요?", message: "한번 삭제되면 다시 불러올 수 없어요", preferredStyle: .alert)
-      
       let deleteAction = UIAlertAction(title: "삭제할게요", style: .destructive, handler: { _ in
         
         persistentService.delete(target)
@@ -170,8 +171,7 @@ final class SearchResultsTableViewController: UITableViewController {
         closure(false)
       })
       
-      alertController.addAction(deleteAction)
-      alertController.addAction(cancelAction)
+      let alertController = UIAlertController.createAlertController(title: "정말 삭제하시나요?", message: "한번 삭제되면 다시 불러올 수 없어요.", with: [deleteAction, cancelAction])
       
       present(alertController, animated: true, completion: nil)
     }

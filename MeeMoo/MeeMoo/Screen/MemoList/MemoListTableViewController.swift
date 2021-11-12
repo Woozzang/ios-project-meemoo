@@ -296,24 +296,27 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
         
         guard pinnedMemos.count < 5 else {
           
-          let alertController = UIAlertController(title: "고정 메모 개수 제한", message: "최대 5개 까지만 고정할 수 있어요", preferredStyle: .alert)
-          
           let okAction = UIAlertAction(title: "알겠어요", style: .default, handler: { _ in
+            
             closure(false)
           })
           
-          alertController.addAction(okAction)
+          let alertController = UIAlertController.createAlertController(title: "고정 메모 개수 제한", message: "최대 5개 까지만 고정할 수 있어요", with: [okAction])
           
           present(alertController, animated: true, completion: nil)
           
           return
         }
         
-        guard indexPath.row < unpinnedMemos.count else { closure(false); return }
+        guard indexPath.row < unpinnedMemos.count else {
+          
+          closure(false)
+          
+          return
+        }
         
         let target = unpinnedMemos[indexPath.row]
           
-        
         try! persistentService.localDB.write {
           target.isPinned.toggle()
         }
@@ -338,54 +341,40 @@ final class MemoListTableViewController: UITableViewController, UISearchControll
     
     let deleteAction = UIContextualAction(style: .normal, title: nil) { [self] _, _, closure in
       
+      var target: Memo
+      
       if indexPath.section == 0 {
         
         guard indexPath.row < pinnedMemos.count else { closure(false); return }
         
-        let target = pinnedMemos[indexPath.row]
+        target = pinnedMemos[indexPath.row]
         
-        let alertController = UIAlertController(title: "정말 삭제하시나요?", message: "한번 삭제되면 다시 불러올 수 없어요", preferredStyle: .alert)
-        
-        let deleteAction = UIAlertAction(title: "삭제할게요", style: .destructive, handler: { _ in
-          persistentService.delete(target)
-          
-          closure(true)
-        })
-        
-        let cancelAction = UIAlertAction(title: "취소할게요", style: .default, handler: { _ in
-          
-          closure(false)
-        })
-        
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
-
       } else {
         
         guard indexPath.row < unpinnedMemos.count else { closure(false); return }
         
-        let target = unpinnedMemos[indexPath.row]
-        
-        let alertController = UIAlertController(title: "정말 삭제하시나요?", message: "한번 삭제되면 다시 불러올 수 없어요", preferredStyle: .alert)
-        
-        let deleteAction = UIAlertAction(title: "삭제할게요", style: .destructive, handler: { _ in
-          persistentService.delete(target)
-          
-          closure(true)
-        })
-        
-        let cancelAction = UIAlertAction(title: "취소할게요", style: .default, handler: { _ in
-          
-          closure(false)
-        })
-        
-        alertController.addAction(deleteAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
+        target = unpinnedMemos[indexPath.row]
       }
+      
+      
+      let deleteAction = UIAlertAction(title: "삭제할게요", style: .destructive ) { _ in
+        
+        persistentService.delete(target)
+        
+        closure(true)
+      }
+      
+      let cancelAction = UIAlertAction(title: "취소할게요", style: .default) { _ in
+        
+        closure(false)
+      }
+      
+      let alertController = UIAlertController.createAlertController(title: "정말 삭제하시나요?",
+                                                                    message: "한번 삭제되면 다시 불러올 수 없어요",
+                                                                    with: [deleteAction, cancelAction])
+      
+      present(alertController, animated: true, completion: nil)
+      
     }
 
     deleteAction.image = UIImage(systemName: "xmark")
