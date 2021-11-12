@@ -121,31 +121,16 @@ final class MemoListTableViewController: UITableViewController {
     
     guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as? MemoTableViewCell else { return UITableViewCell() }
     
+    let data = indexPath.section == 0 ? pinnedMemoList[indexPath.row] : notPinnedmemoList[indexPath.row]
+    
+    cell.titleLabel.text = data.title
+    cell.payloadLabel.text = data.payload
+    
+    cell.createdDate = data.createdDate
+    
+    
     return cell
   }
-  
-//  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//    switch section {
-//      /*
-//       고정된 메모
-//       */
-//      case 0:
-//        return pinnedMemoList.count == 0 ? nil : "고정된 메모"
-//
-//      /*
-//       그냥 메모
-//       */
-//      case 1:
-//
-//        let attributes: [NSAttributedString.Key : Any?] = [.font: UIFont.systemFont(ofSize:20, weight:.bold) ]
-//
-//        return NSAttributedString(string: "메모", attributes: attributes) as? String
-//
-//      default:
-//        return ""
-//    }
-//  }
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     
@@ -175,11 +160,17 @@ final class MemoListTableViewController: UITableViewController {
     
     sectionHeaderView.sectionTitleLabel.text = title
     
-    sectionHeaderView.translatesAutoresizingMaskIntoConstraints = false
-    sectionHeaderView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-    
     return sectionHeaderView
     
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    
+    if section == 0, pinnedMemoList.isEmpty {
+      return 0
+    }
+    
+    return 40
   }
   
   

@@ -16,8 +16,8 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0i-Em-VQr">
-                    <rect key="frame" x="20" y="29.5" width="45" height="21"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <rect key="frame" x="0.0" y="29.5" width="42.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -25,7 +25,7 @@
             <viewLayoutGuide key="safeArea" id="UiU-K0-PIp"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="c0i-Em-VQr" firstAttribute="leading" secondItem="UiU-K0-PIp" secondAttribute="leading" constant="20" id="5kC-zW-sZX"/>
+                <constraint firstItem="c0i-Em-VQr" firstAttribute="leading" secondItem="UiU-K0-PIp" secondAttribute="leading" id="5kC-zW-sZX"/>
                 <constraint firstItem="c0i-Em-VQr" firstAttribute="centerY" secondItem="fNC-Pc-HTM" secondAttribute="centerY" id="bVX-pN-Fxs"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

@@ -15,12 +15,23 @@ class MemoTableViewCell: UITableViewCell {
 
   @IBOutlet weak var titleLabel: UILabel!
   
-  @IBOutlet weak var cellLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel!
   
   @IBOutlet weak var payloadLabel: UILabel!
   
+  var createdDate: Date? {
+    didSet {
+      
+    }
+  }
+  
   override func awakeFromNib() {
-      super.awakeFromNib()
-      // Initialization code
+    super.awakeFromNib()
+    
+    dateLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
+    dateLabel.textColor = .systemGray
+    
+    payloadLabel.font = UIFont.systemFont(ofSize: 15, weight: .light)
+    payloadLabel.textColor = .systemGray
   }
 }

@@ -21,22 +21,22 @@
                         <rect key="frame" x="20" y="11" width="374" height="58"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8X8-SC-THy">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="29.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XDy-op-BGM">
-                                <rect key="frame" x="0.0" y="37.5" width="374" height="20.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XDy-op-BGM">
+                                <rect key="frame" x="0.0" y="28.5" width="374" height="29.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6W-6b-wvU">
-                                        <rect key="frame" x="0.0" y="0.0" width="109" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" text="날짜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6W-6b-wvU">
+                                        <rect key="frame" x="0.0" y="0.0" width="29.5" height="29.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="내용내용내용내용내용내용내용내용내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUT-dn-hvH">
-                                        <rect key="frame" x="109" y="0.0" width="265" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="내용내용내용내용내용내용내용내용내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUT-dn-hvH">
+                                        <rect key="frame" x="37.5" y="0.0" width="336.5" height="29.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -55,9 +55,9 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.91368681190000001" green="0.91374689340000004" blue="0.93438625340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="cellLabel" destination="Y6W-6b-wvU" id="UAB-Ou-HQq"/>
+                <outlet property="dateLabel" destination="Y6W-6b-wvU" id="UAB-Ou-HQq"/>
                 <outlet property="payloadLabel" destination="UUT-dn-hvH" id="Y4v-U5-uOO"/>
-                <outlet property="titleLabel" destination="Y6W-6b-wvU" id="PDA-cq-3eI"/>
+                <outlet property="titleLabel" destination="8X8-SC-THy" id="oQV-HC-soH"/>
             </connections>
             <point key="canvasLocation" x="-17.39130434782609" y="135.26785714285714"/>
         </tableViewCell>
