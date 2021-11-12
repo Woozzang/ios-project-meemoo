@@ -149,6 +149,8 @@ final class MemoListTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     
+    guard let sectionHeaderView = MemoSectionHeaderView.loadFromXib() as? MemoSectionHeaderView else { return nil }
+    
     var title: String = ""
 
     switch section {
@@ -157,41 +159,27 @@ final class MemoListTableViewController: UITableViewController {
        */
       case 0:
         guard !pinnedMemoList.isEmpty else { return nil }
-        
+
         title = "고정된 메모"
       /*
        그냥 메모
        */
       case 1:
-        
+
         title = "메모"
-        
+
       default:
-        
+
         break
     }
     
-    let view = UIView()
+    sectionHeaderView.sectionTitleLabel.text = title
     
-    view.translatesAutoresizingMaskIntoConstraints = false
-    view.heightAnchor.constraint(equalToConstant: 80).isActive = true
+    sectionHeaderView.translatesAutoresizingMaskIntoConstraints = false
+    sectionHeaderView.heightAnchor.constraint(equalToConstant: 80).isActive = true
     
-    let label = UILabel()
+    return sectionHeaderView
     
-    let attributes: [NSAttributedString.Key : Any?] = [.font: UIFont.systemFont(ofSize:20, weight:.bold) ]
-    
-    let text = NSAttributedString(string: title, attributes: attributes)
-    
-    label.attributedText = text
-    
-    view.addSubview(label)
-    
-    label.translatesAutoresizingMaskIntoConstraints = false
-    
-    label.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-    label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    
-    return view
   }
   
   
