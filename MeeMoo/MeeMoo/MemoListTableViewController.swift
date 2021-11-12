@@ -10,13 +10,11 @@ import UIKit
 class MemoListTableViewController: UITableViewController {
   
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      
-      
-      
-      navigationItem.backButtonTitle = "메모"
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    navigationItem.backButtonTitle = "메모"
+  }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     
@@ -24,6 +22,8 @@ class MemoListTableViewController: UITableViewController {
       case _ as UIBarButtonItem:
         guard let vc = segue.destination as? CreateMemoViewController else  { return }
         vc.isMemoEditing = true
+        
+        vc.persistentServie = PersistentService.standard
         
       default:
         break

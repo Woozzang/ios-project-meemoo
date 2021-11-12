@@ -11,6 +11,8 @@ final class CreateMemoViewController: UIViewController {
 
   @IBOutlet private weak var textView: UITextView!
   
+  var persistentServie: PersistentService?
+  
   var isMemoEditing = false {
     didSet {
       navigationItem.rightBarButtonItems = isMemoEditing ? barItemsOnEditing : nil
@@ -72,6 +74,7 @@ final class CreateMemoViewController: UIViewController {
     
     let newMemo = Memo()
     newMemo.title = lines.first!
+    newMemo.createdDate = Date()
     
     if lines.count > 1 {
       
@@ -82,7 +85,7 @@ final class CreateMemoViewController: UIViewController {
     /*
      DB에 넣기
      */
-    
+    persistentServie?.write(newMemo)
   }
   
 }
