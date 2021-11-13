@@ -24,27 +24,12 @@ final class PersistentService {
     localDB.configuration.fileURL?.path
   }
   
-  var pinnedMemoList: [Memo] = [] {
-    didSet {
-      NotificationCenter.default.post(name: Self.pinnedMemosDidChange, object: nil)
-    }
-  }
-  
-  var unPinnedMemoList: [Memo] = [] {
-    didSet {
-      NotificationCenter.default.post(name: Self.unpinnedMemosDidChange, object: nil)
-    }
-  }
-  
   // MARK: - Life Cycle
   
-  private init() {
-    
-    observeMemoObjects()
-  }
+  private init() { }
   
   /*
-   앱 최초 실행인지 확인하는 계산속성
+   앱 최초 실행을 확인하는 계산속성
    */
   
   private var didLaunchBefore: Bool {
@@ -63,24 +48,6 @@ final class PersistentService {
   
   var isFirstLaunch: Bool {
     return !didLaunchBefore
-  }
-  
-  private func observeMemoObjects() {
-    
-    token = localDB.objects(Memo.self).observe(on: .main) { [weak self] change in
-      
-      guard let self = self else { return }
-      
-      switch change {
-        case .update(_, _, _, _):
-          
-          self.pinnedMemoList = self.read(isPinned: true)
-          self.unPinnedMemoList = self.read()
-          
-        default:
-          break
-      }
-    }
   }
   
   // FIXME: observe 함수 추상화
@@ -136,11 +103,4 @@ final class PersistentService {
     return searchResults
   }
   
-}
-
-extension PersistentService {
-  
-  static let pinnedMemosDidChange = Notification.Name.init(rawValue: "pinnedMemosDidChange")
-  
-  static let unpinnedMemosDidChange = Notification.Name.init(rawValue: "unpinnedMemosDidChange")
 }

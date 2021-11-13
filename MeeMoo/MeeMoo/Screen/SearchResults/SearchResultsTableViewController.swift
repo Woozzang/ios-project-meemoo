@@ -38,7 +38,7 @@ final class SearchResultsTableViewController: UITableViewController {
   
   private func registerCells() {
     
-    tableView.register(MemoTableViewCell.loadNib()(), forCellReuseIdentifier: MemoTableViewCell.identifier)
+    tableView.register(MemoTableViewCell.loadNib(), forCellReuseIdentifier: MemoTableViewCell.identifier)
   }
   
   private func setUpTableView() {
